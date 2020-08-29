@@ -294,6 +294,11 @@ var dropTaskHandler = function (event) {
 
 
 var dragLeaveHandler = function (event) {
+  // make sure the closest function exists (was an intermittent bug)
+  if (typeof event.target.closest !== "function") {
+    return;
+  }
+
   var taskListEl = event.target.closest(".task-list");
   if (taskListEl) {
     taskListEl.removeAttribute("style");
